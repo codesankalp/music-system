@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method='POST'>{% csrf_token %}
+        <p>select songs to copy and transfer.</p><br>
+        <label class="required " for="id_playlist_songs ">{{obj}} playlist songs:</label>
+        <select name="playlist_songs" required multiple>
+            {% for i in songs %}
+          <option value="{{i.song_name}}">{{i.song_name}}</option>
+          {% endfor %}
+        
+        </select>
+        <br><br>
+        <p>select playlist to add the copied song.</p><br>
+        <label class="required " for="id_playlist">All Playlists :</label>
+        <select name="playlist" required multiple>
+            {% for i in playlist %}
+          <option value="{{i.pk}}">{{i}}</option>
+          {% endfor %}
+        
+        </select>
+        <br><br>
+
+        <input type="submit" value="Transfer">
+
+    </form>
+</body>
+
+</html>

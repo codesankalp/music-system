@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST" action="{% url 'music:edit' %}">{% csrf_token %}
+        <label for="playlist">Select Playlist To Edit: </label>
+        <select name="playlist" required>
+            {% for i in playlist %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor%}
+        </select>
+        <br><br>
+        <label for="operation">Operation To Perform: </label>
+        <select name="operation" required>
+            <option value="1">COPY/TRANSFER</option>
+            <option value="2">SORT PLAYLIST</option>
+        </select>
+        <br><br>
+        <input type="submit" value="EDIT">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST" action="{% url 'music:create' %}">{% csrf_token %}
+        <label class="required " for="id_playlist_name ">Playlist name:</label>
+
+        <input type="text" name="playlist_name" class="vTextField " maxlength="200" required=" " id="id_playlist_name ">
+
+
+
+        <br><br>
+        <label class="required " for="id_playlist_songs ">Playlist songs:</label>
+        <select name="playlist_songs" required multiple>
+            {% for i in songs %}
+          <option value="{{forloop.counter}}">{{i}}</option>
+          {% endfor %}
+        
+        </select>
+
+
+
+        <a class="related-widget-wrapper-link add-related " id="add_id_playlist_songs " href="{% url 'music:add' %}" title="Add another songs "><img src="/static/admin/img/icon-addlink.svg " alt="Add "></a>
+
+
+
+
+        <br><br>
+        <label class="required " for="id_visibility ">Visibility:</label>
+
+        <select name="visibility" required=" " id="id_visibility ">
+          <option value=" " selected=" ">---------</option>
+        
+          <option value="1">public</option>
+        
+          <option value="2">private</option>
+        
+          <option value="3">followers</option>
+        
+        </select>
+        <br><br>
+        <input type="submit" label="create playlist">
+
+    </form>
+</body>
+
+</html>

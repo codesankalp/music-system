@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% if value == 0 %}
+    <h2>Songs in {{obj}} Playlist</h2>
+    {% else %}
+    <h2>Songs Sorted in {{obj}} Playlist</h2>
+    {% endif %} {% for i in songs %}
+    <li><a href="/media/{{i.song_file}}">{{i.song_name}}</a></li><br> {% endfor %}
+    <br><br> {% if value == 0 %}
+    <form action="" method='POST'>{% csrf_token %}
+
+        <label for="basis">Sort on basis of: </label>
+        <select name="basis" required>
+            <option value='1'>size</option>
+        </select>
+        <br><br>
+
+        <input type="submit" value="Sort">
+
+    </form>{% endif %}
+
+</body>
+
+</html>

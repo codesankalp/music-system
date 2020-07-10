@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>===== All Songs =====</h1>
+    {% for i in songs %}
+    <li><a href='/media/{{i.song_file}}'>{{i.song_name}}</a></li>
+    {% endfor %}
+    <br><br>
+    <h1>======= PLAYLISTS ======</h1>
+    <h3>= PUBLIC =</h3>
+    {% for i in public %}
+    <li><a href='/music/view/{{i}}'>{{i}}</a></li>
+    {% endfor %}
+    <br>
+    <h3>= PRIVATE =</h3>
+    {% for i in private %}
+    <li><a href='/music/view/{{i}}'>{{i}}</a></li>
+    {% endfor %}
+    <br>
+    <h3>= FROM FOLLOWING =</h3>
+    {% for i in follow %}
+    <li><a href='/music/view/{{i}}'>{{i}}</a></li>
+    {% endfor %}
+    <br>
+    <h3>
+        <a href="{% url 'music:add' %}">ADD SONG</a>
+    </h3>
+    <h3>
+        <a href="{% url 'music:create' %}">CREATE PLAYLIST</a>
+    </h3>
+    <h3>
+        <a href="{% url 'music:edit' %}">EDIT PLAYLIST</a>
+    </h3>
+</body>
+
+</html>
